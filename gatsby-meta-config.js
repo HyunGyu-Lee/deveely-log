@@ -1,5 +1,5 @@
 module.exports = {
-  title: `@deveely`,
+  title: `@deveely-log`,
   description: `자기실력이 좋다고 느껴지는건 공부를 안하고 있다는 신호`,
   author: `deveely`,
   introduction: `자기실력이 좋다고 느껴지는건 공부를 안하고 있다는 신호`,
