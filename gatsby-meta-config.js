@@ -3,7 +3,7 @@ module.exports = {
   description: `자기실력이 좋다고 느껴지는건 공부를 안하고 있다는 신호`,
   author: `deveely`,
   introduction: `자기실력이 좋다고 느껴지는건 공부를 안하고 있다는 신호`,
-  siteUrl: `https://gatsby-starter-bee.netlify.com`, // Your blog site url
+  siteUrl: `https://deveely-log.netlify.com`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
     github: `HyunGyu-Lee`, // Your GitHub account
