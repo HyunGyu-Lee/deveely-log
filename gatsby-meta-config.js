@@ -9,6 +9,7 @@ module.exports = {
     github: `HyunGyu-Lee`, // Your GitHub account
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
+    tistory: `https://do-study.tistory.com`,
   },
   icon: `content/assets/felog.png`, // Add your favicon
   keywords: [`blog`],
@@ -25,5 +26,5 @@ module.exports = {
   share: {
     facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
   },
-  ga: '', // Add your google analytics tranking ID
+  ga: 'UA-125964203-3', // Add your google analytics tranking ID
 }

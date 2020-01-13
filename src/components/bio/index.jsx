@@ -9,7 +9,8 @@ export const Bio = () => (
     query={bioQuery}
     render={data => {
       const { author, social, introduction } = data.site.siteMetadata
-
+      console.log(social.tistory)
+      console.log(social)
       return (
         <div className="bio">
           <div className="author">
@@ -45,6 +46,11 @@ export const Bio = () => (
                       Facebook
                     </a>
                   )}
+                  {social.tistory && (
+                    <a href={`${social.tistory}`}>
+                      Tistory
+                    </a>
+                  )}
                 </p>
               </div>
             </div>
@@ -72,7 +78,8 @@ const bioQuery = graphql`
           twitter
           github
           medium
-          facebook
+          facebook,
+          tistory
         }
       }
     }
