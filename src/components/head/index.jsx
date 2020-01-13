@@ -36,7 +36,7 @@ export function Head({ description, lang, meta, keywords, title }) {
               },
               {
                 property: `og:image`,
-                content: data.avatar.childImageSharp.fixed,
+                content: data.avatar.childImageSharp.fixed.src,
               },
               {
                 name: `twitter:card`,
@@ -89,7 +89,7 @@ const detailsQuery = graphql`
   query DefaultSEOQuery {
     avatar: file(absolutePath: { regex: "/profile.png/" }) {
       childImageSharp {
-        fixed(width: 72, height: 72) {
+        fixed(width: 360, height: 240) {
           ...GatsbyImageSharpFixed
         }
       }
