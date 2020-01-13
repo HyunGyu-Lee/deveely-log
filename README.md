@@ -1,5 +1,5 @@
 ## deveely-log
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4b1962ce-6206-4d8f-9516-63be92294198/deploy-status)](https://app.netlify.com/sites/gatsby-starter-bee/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4b1962ce-6206-4d8f-9516-63be92294198/deploy-status)](https://app.netlify.com/sites/deveely-log/deploys)
 
 #### 소개
 Gatsby + Netlify 조합으로 운영하는 기술 블로그입니다.(Thanks to [@JaeYeopHan](https://github.com/JaeYeopHan/gatsby-starter-bee))
