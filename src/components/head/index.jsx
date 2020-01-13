@@ -35,6 +35,10 @@ export function Head({ description, lang, meta, keywords, title }) {
                 content: `website`,
               },
               {
+                property: `og:image`,
+                content: data.avatar.childImageSharp.fixed,
+              },
+              {
                 name: `twitter:card`,
                 content: `summary`,
               },
@@ -54,9 +58,9 @@ export function Head({ description, lang, meta, keywords, title }) {
               .concat(
                 keywords.length > 0
                   ? {
-                      name: `keywords`,
-                      content: keywords.join(`, `),
-                    }
+                    name: `keywords`,
+                    content: keywords.join(`, `),
+                  }
                   : []
               )
               .concat(meta)}
@@ -83,6 +87,13 @@ Head.propTypes = {
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
+    avatar: file(absolutePath: { regex: "/profile.png/" }) {
+      childImageSharp {
+        fixed(width: 72, height: 72) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       siteMetadata {
         title
