@@ -80,7 +80,7 @@ Spring JPA에 평소에 잘 알려지지 않은 사실들과 오해들을 소개
  ![Image1](./images/2019-12-01-nhn-forward-review/nhn9.jpeg)
  
 ## 마치며
- ![Image1]({{ "/assets/images/post-images/2019-12-01-nhn-forward-review/nhn4.jpeg" | absolute_url }})
+  ![Image1](./images/2019-12-01-nhn-forward-review/nhn4.jpeg)
 NHN Forward 2019의 심볼인 >> 는 리달리디렉션 기호 >>를 형상화한 것으로 지식과 경험을 더하고 쌓을 수 있기를 바라는 마음을 담았다고 합니다.
 
 이런 NHN의 의지만큼 많은 것을 경험하고, 배우고, 즐거웠던 1분 1초가 아깝지 않은 시간이었습니다.
