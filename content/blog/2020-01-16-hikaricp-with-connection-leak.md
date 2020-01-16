@@ -217,16 +217,10 @@ public class GameDatabaseConfiguration {
 ```
 
 ```java
-public class FriendlyMatchInvitationRepositoryImpl extends QueryDslRepositorySupport implements FriendlyMatchInvitationRepositorySupport {
-
-	private QEntityFriendlyMatchInvitation invitation = QEntityFriendlyMatchInvitation.entityFriendlyMatchInvitation;
-	private QEntityRat member = QEntityRat.entityRat;
-
-	public FriendlyMatchInvitationRepositoryImpl() {
-		super(EntityFriendlyMatchInvitation.class);
-	}
-
-	// 문제가 된 부분 - EntityManager를 주입받기위해 setEntityManage 재정의하지 않음
+public class GreetingRepositoryImpl extends QueryDslRepositorySupport implements GreetingRepositorySupport {
+	...
+	
+	// 문제가 된 부분 - EntityManager를 주입받기위해 setEntityManage 재정의하지 않고 별도의 메소드를 통함
 	// @PersistenceContext에 의해 setTargetEntityManager(정상 EntityManager) -> super.setEntityManager(정상 EntityManager) 
 	// 상위 메소드의 @Autowired에 의해 setEntityManager(비정상 EntityManager)로 일반 EntityManager가 사용됨
 	@PersistenceContext(unitName = "game")
@@ -234,16 +228,7 @@ public class FriendlyMatchInvitationRepositoryImpl extends QueryDslRepositorySup
 		super.setEntityManager(entityManager);
 	}
 
-	@Override
-	public List<EntityFriendlyMatchInvitation> findFriendlyMatchInvitations(String sno, LocalDateTime expireTimeLimit) {
-		return new JPAQuery<EntityFriendlyMatchInvitation>(getEntityManager())
-				.from(invitation)
-				.innerJoin(invitation.inviter, member)
-				.fetchJoin()
-				.where(invitation.myUserId.eq(sno).and(invitation.expireDate.after(LocalDateTime.now())))
-				.orderBy(invitation.id.desc())
-				.fetch();
-	}
+	...
 
 }
 ```
@@ -255,32 +240,16 @@ public class FriendlyMatchInvitationRepositoryImpl extends QueryDslRepositorySup
 두 번째로, MultidataSource를 적용하는 과정에서 @Autowired 어노테이션만으로는 프레임워크가 어떤 데이터소스의 EntityManager를 넣어줘야할지 판단하지 못하는 오류를 해결하기 위해 @PersistenceContext + unitName attribute 지정하는 방식으로 setEntityManager를 재정의하였습니다.
 
 ```java
-public class FriendlyMatchInvitationRepositoryImpl extends QueryDslRepositorySupport implements FriendlyMatchInvitationRepositorySupport {
-
-	private QEntityFriendlyMatchInvitation invitation = QEntityFriendlyMatchInvitation.entityFriendlyMatchInvitation;
-	private QEntityRat member = QEntityRat.entityRat;
-
-	public FriendlyMatchInvitationRepositoryImpl() {
-		super(EntityFriendlyMatchInvitation.class);
-	}
-    
+public class GreetingRepositoryImpl extends QueryDslRepositorySupport implements GreetingRepositorySupport {
+	...
+	
 	@Override
 	@PersistenceContext(unitName = "game")
 	public void setEntityManager(EntityManager entityManager) {
 		super.setEntityManager(entityManager);
 	}
-
-	@Override
-	public List<EntityFriendlyMatchInvitation> findFriendlyMatchInvitations(String sno, LocalDateTime expireTimeLimit) {
-		return new JPAQuery<EntityFriendlyMatchInvitation>(getEntityManager())
-				.from(invitation)
-				.innerJoin(invitation.inviter, member)
-				.fetchJoin()
-				.where(invitation.myUserId.eq(sno).and(invitation.expireDate.after(LocalDateTime.now())))
-				.orderBy(invitation.id.desc())
-				.fetch();
-	}
-
+	
+	...
 }
 ```
 
