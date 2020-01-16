@@ -164,11 +164,11 @@ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet success
 아래 2가지 이유가 복합적으로 연관되어 문제가 발생하였습니다.
 
 1. EntityManager를 Bean으로 설정함
-  - EntityManager는 스레드간 절대 공유하면 안됨
+    - EntityManager는 스레드간 절대 공유하면 안됨
 2. QueryDSL 구현 Resitory에서 특정 datasource의 EntityManager를 받기 위해 setEntityManager를 재정의하지 않고 별도 setting 메소드 작성
 
-JPA를 사용할 때 EntityManager를 클래스 멤버변수로 두고 `@PersistenceContext`로 주입받아 사용하는 경우가 있는데 이것은 어떻게 안전할까요?
-바로 보통 EntityManager가 아닌 `SharedEntityManagerBean` 라는 공유 가능하며 커넥션 생성 / 반환에 대한 관리를 지원하는 구현체가 주입되기 때문입니다.
+### JPA를 사용할 때 보통 EntityManager를 클래스 멤버변수로 두고 `@PersistenceContext`로 주입받아 사용하는데 이것은 어떻게 안전할까요?
+바로 일반적으로 `EntityManagerFactory`를 통해 하나하나 생성되는 EntityManager가 아닌 `SharedEntityManagerBean` 라는 공유 가능하며 커넥션 생성 / 반환에 대한 관리를 지원하는 구현체가 주입되기 때문입니다.
 
 QueryDslRepositorySupport는 아래와 같이 EntityManager를 주입받는 코드가 존재합니다.
 특별한 설정이 없으면 `SharedEntityManagerBean`이 주입되어 아무 문제 없이 작동 했을것입니다.
@@ -286,7 +286,12 @@ public class FriendlyMatchInvitationRepositoryImpl extends QueryDslRepositorySup
 
 # 마치며
 기본이 중요하다는 것을 다시 느꼈습니다. 분명 JPA를 공부하며 책에서 EntityManager는 스레드간 공유하면 안되는 것이라는 내용을 본 적이 있음에도 불고하고
-실수를 하여 문제가 발생했고 해결하기 위해 수많은 삽질을 하였습니다. (덕분에 HikariCP 설정과 동작방식을 공부하고 이해하는데 큰 도움은 됐습니다만.. )
+실수를 하여 문제가 발생했고 해결하기 위해 수많은 삽질을 하였습니다. 
+
+두번째는 자신이 사용하는 기술을 정확히 이해하고 사용하자는 것입니다. 이번에 겪은 이슈도 `JPA의 대한 이해`와 `HikariCP에 대한 이해` 부족으로 시간이 오래 걸렸습니다.
+기술에 대한 이해가 있었다면 애초에 문제가 발생하지 않았거나 훨씬 빠르게 조치를 할 수 있었을 것입니다.
+
+하지만 `퍼포먼스가 좋다`, `가장 인기있다`라는 것만 알고 있던 `HikariCP`에 대해 좀 더 자세히 알게 되어서 한편으로는 좋은 경험이었다는 생각이듭니다.
 
 # 참고
 HikariCP 공식 문서 : [https://github.com/brettwooldridge/HikariCP](https://github.com/brettwooldridge/HikariCP)
