@@ -54,6 +54,10 @@ export function Head({ description, lang, meta, keywords, title }) {
                 name: `twitter:description`,
                 content: metaDescription,
               },
+              {
+                name: `naver-site-verification`,
+                content: data.site.siteMetadata.naverSiteVerification,
+              }
             ]
               .concat(
                 keywords.length > 0
@@ -99,6 +103,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        naverSiteVerification
       }
     }
   }

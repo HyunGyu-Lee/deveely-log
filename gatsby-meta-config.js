@@ -27,4 +27,5 @@ module.exports = {
     facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
   },
   ga: 'UA-125964203-3', // Add your google analytics tranking ID
+  naverSiteVerification: '7508970ff5f8f410e08e888f2fa54bc95666c0b1'
 }
