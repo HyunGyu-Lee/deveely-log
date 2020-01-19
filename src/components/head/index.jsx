@@ -17,6 +17,14 @@ export function Head({ description, lang, meta, keywords, title }) {
             }}
             title={title}
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            script={[
+              {
+                'data-ad-client': 'ca-pub-9001641802424066',
+                type: 'text/javascript',
+                src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+                async: 'async'
+              }
+            ]}
             meta={[
               {
                 name: `description`,
