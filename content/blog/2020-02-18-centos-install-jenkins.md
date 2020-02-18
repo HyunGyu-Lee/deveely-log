@@ -5,7 +5,7 @@ date:   2020-02-17 11:43:19
 category: ci-cd
 tags: [CI-CD,Jenkins]
 comments: true
-draft: false
+draft: true
 ---
 
 젠킨스 설치
