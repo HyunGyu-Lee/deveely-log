@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Redis 개념과 설치, 활용방안"
-date:   2020-07-15 13:04:19
+date:   2020-07-17 13:04:19
 category: redis
 tags: [redis,in-memory]
 comments: true
@@ -87,6 +87,7 @@ Key하나에 여러 field-value 쌍을 저장할 수 있는 자료구조로 RDB�
 즉 Redis Key하나 당 RDB Table의 row라고 생각하면 된다.
 
 만약 아래와 같은 구조를 같는 User 테이블이 있다고하면
+
 | ID | Name | Age |
 | --- | --- | --- |
 | 1 | Kim | 29 |
@@ -94,11 +95,13 @@ Key하나에 여러 field-value 쌍을 저장할 수 있는 자료구조로 RDB�
 
 이를 Redis Hash 구조에서는 아래와 같이 표현된다.
 User-1 (HashKey)
+
 | Name | Kim |
 | --- | --- |
 | Age | 29 |
 
 User-2 (HashKey)
+
 | Name | Lee |
 | --- | --- |
 | Age | 28 |
@@ -161,6 +164,6 @@ Redis는 인메모리 DB인 만큼 저장할 수 있는 데이터량이 한정�
 timeout의 경우 동일한 키의 변경이 있을 경우 갱신된다. 
 기본적으로 모든 데이터에 Expire 처리를 할 것을 권장하며, 너무 짧으면 레디스에 부하가, 너무 길면 의미가 없어지니 적절한 시간을 찾는것이 중요하다.
 
-참고
+## 참고
 https://medium.com/garimoo/개발자를-위한-레디스-튜토리얼-01-92aaa24ca8cc
 https://redis.io/
