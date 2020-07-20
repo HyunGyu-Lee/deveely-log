@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Spring Boot에서 Redis 활용"
-date:   2020-07-17 13:04:19
+date:   2020-07-20 13:04:19
 category: redis
 tags: [redis,in-memory]
 comments: true
