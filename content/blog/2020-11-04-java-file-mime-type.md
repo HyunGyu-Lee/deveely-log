@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Java에서 파일의 Mime type을 판별하는 방법"
-date:   2020-07-21 13:04:19
+date:   2020-11-04 21:04:19
 category: backend-java
 tags: [java]
 comments: true
