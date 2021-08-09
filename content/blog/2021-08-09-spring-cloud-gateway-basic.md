@@ -46,8 +46,9 @@ dependencyManagement {
 	}
 }
 
+// Spring Cloud Gateway 의존성 추가
 dependencies {
-	implementation 'org.springframework.cloud:spring-cloud-starter-gateway' // Spring Cloud Gateway 의존성
+	implementation 'org.springframework.cloud:spring-cloud-starter-gateway' 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 ```
@@ -65,7 +66,8 @@ dependencies {
     - `/api/monitoring` 로 시작하는 요청만을 대상으로 하며
     - Path를 `/api/monitoring/*` => `/monitor/*`로 변경하여
     - uri에 설정된 서버로 라우팅
-```
+
+```yml
 spring:
   cloud:
     gateway:
